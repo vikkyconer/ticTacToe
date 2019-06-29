@@ -7,7 +7,10 @@ const gameSchema = new Schema({
   player1Moves: Array,
   player2Moves: Array,
   winner: Number,
-  startPlayer: String
+  startPlayer: String,
+  currentPlayer: String,
+  currentPiece: Number,
+  board: Array
 }, {
   timestamps: {
     createdAt: 'createdAt',

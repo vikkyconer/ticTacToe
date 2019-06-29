@@ -67,10 +67,25 @@ async function setAvailablePlayer(userId, availability) {
   })
 }
 
+async function update(userId, model) {
+  return new Promise((resolve, reject) => {
+    User.findOneAndUpdate({
+      '_id': userId
+    }
+    , model,{new: true}, (error, result) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(result)
+    })
+  })
+}
+
 module.exports = {
   add,
   getByEmail,
   get,
   getAvailablePlayer,
-  setAvailablePlayer
+  setAvailablePlayer,
+  update
 }

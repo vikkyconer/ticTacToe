@@ -13,7 +13,35 @@ function add(gameData) {
   })
 }
 
+function get(gameId) {
+  return new Promise((resolve, reject) => {
+    Game.findById(gameId,
+      (error, result) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(result)
+    })
+  })
+}
+
+async function update(userId, model) {
+  return new Promise((resolve, reject) => {
+    Game.findOneAndUpdate({
+      '_id': userId
+    }
+    , model, {new: true}, (error, result) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(result)
+    })
+  })
+}
+
 module.exports = {
-  add
+  add,
+  get,
+  update
 }
 

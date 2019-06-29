@@ -5,7 +5,8 @@ const userSchema = new Schema({
   name: String,
   email: String,
   password: String,
-  availability: Boolean
+  availability: Boolean,
+  currentGameId: String
 }, {
   timestamps: {
     createdAt: 'createdAt',

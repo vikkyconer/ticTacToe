@@ -37,8 +37,40 @@ function get(userId) {
   })
 }
 
+function getAvailablePlayer(userId) {
+  return new Promise((resolve, reject) => {
+    User.findOne({availability: true, '_id': { $ne: userId }},
+      (error, result) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(result)
+    })
+  })
+}
+
+async function setAvailablePlayer(userId, availability) {
+  return new Promise((resolve, reject) => {
+    User.findOneAndUpdate({
+      '_id': userId
+    }
+    , {
+      $set: {
+        availability
+      }
+    }, (error, result) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(result)
+    })
+  })
+}
+
 module.exports = {
   add,
   getByEmail,
-  get
+  get,
+  getAvailablePlayer,
+  setAvailablePlayer
 }

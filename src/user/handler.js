@@ -5,7 +5,8 @@ async function add(ctx) {
   const body = ctx.request.body
   const model = {
     ...body,
-    password : appUtil.createHash(body.password)
+    password : appUtil.createHash(body.password),
+    availability: true
   }
   const response = await User.add(model)
   if(response) {
@@ -20,6 +21,7 @@ async function login(ctx) {
   const body = ctx.request.body
   const user = await User.getByEmail(body.email)
   if(user && user.password === appUtil.createHash(body.password)) {
+    await User.setAvailablePlayer(user['_id'], true)
     ctx.state.user.userId = user['_id']
     ctx.response.body = { success: true, message: 'logged in successfully', response: user}
   }

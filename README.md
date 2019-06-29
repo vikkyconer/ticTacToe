@@ -1,4 +1,4 @@
-# ticTacToe
+# TicTacToe
 
 ## Pre-Requisites
 

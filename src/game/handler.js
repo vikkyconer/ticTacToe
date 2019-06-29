@@ -78,8 +78,17 @@ async function move(ctx) {
             winnerPlayer,
             finished
           }})
-        console.log('response: ', response)
-        ctx.response.body = { success: true, message: 'Successfully played your move', response: response.board }
+        if(finished) {
+          if(winnerPlayer) {
+            ctx.response.body = { success: true, message: `Game is won by ${winnerPlayer}`, response: response.board }
+          }
+          else {
+            ctx.response.body = { success: true, message: `Game is finished`, response: response.board }
+          }
+        }
+        else {
+          ctx.response.body = { success: true, message: 'Successfully played your move', response: response.board }
+        }
       }
     }
   }

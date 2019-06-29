@@ -21,8 +21,8 @@ This project contains two modules **User** and **Game**. This game allows any tw
 	"name": "User's name",
 	"email": "email@gmail.com",
 	"password": "password"
-}
-    ```
+  }
+```
 
 * **Login** -
     * Method - POST
@@ -32,7 +32,8 @@ This project contains two modules **User** and **Game**. This game allows any tw
     {
 	"email": "email@gmail.com",
 	"password": "password"
-    }```
+    }
+```
 
 * **Profile** -
     * Method - GET
@@ -51,7 +52,8 @@ This project contains two modules **User** and **Game**. This game allows any tw
     ```JSON
     {
 	"move": [1,2]
-    }```
+    }
+    ```
 
 * **Status** -
     * Method - GET

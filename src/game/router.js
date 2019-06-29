@@ -8,5 +8,6 @@ const router = new Router({ prefix: '/game' })
 
 router.get('/start', authentication.isAuth, handler.start)
 router.post('/move', authentication.isAuth, isValid(gameContract.move), handler.move)
+router.get('/status', authentication.isAuth, handler.status)
 
 module.exports = router
